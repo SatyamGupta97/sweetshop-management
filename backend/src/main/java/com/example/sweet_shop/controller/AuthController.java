@@ -1,6 +1,7 @@
 package com.example.sweet_shop.controller;
 
 import com.example.sweet_shop.dto.AuthResponse;
+import com.example.sweet_shop.dto.LoginRequest;
 import com.example.sweet_shop.dto.RegisterRequest;
 import com.example.sweet_shop.service.AuthService;
 import jakarta.validation.Valid;
@@ -22,5 +23,12 @@ public class AuthController {
     public ResponseEntity<AuthResponse> registerUser(@Valid @RequestBody RegisterRequest registerRequest) {
         authService.register(registerRequest.getUsername(), registerRequest.getPassword());
         return ResponseEntity.ok(new AuthResponse("User registered successfully!"));
+    }
+
+    // This is the new method to add
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> loginUser(@RequestBody LoginRequest loginRequest) {
+        String token = authService.login(loginRequest.getUsername(), loginRequest.getPassword());
+        return ResponseEntity.ok(new AuthResponse("Login successful!", token));
     }
 }
