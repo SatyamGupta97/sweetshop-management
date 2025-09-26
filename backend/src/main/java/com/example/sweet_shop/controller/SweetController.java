@@ -45,4 +45,16 @@ public class SweetController {
         List<Sweet> sweets = sweetService.searchSweets(name, category, minPrice, maxPrice);
         return ResponseEntity.ok(sweets);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Sweet> updateSweet(@PathVariable Long id, @RequestBody SweetRequestDto sweetRequestDto) {
+        Sweet updatedInfo = new Sweet();
+        updatedInfo.setName(sweetRequestDto.getName());
+        updatedInfo.setCategory(sweetRequestDto.getCategory());
+        updatedInfo.setPrice(sweetRequestDto.getPrice());
+        updatedInfo.setQuantity(sweetRequestDto.getQuantity());
+
+        Sweet updatedSweet = sweetService.updateSweet(id, updatedInfo);
+        return ResponseEntity.ok(updatedSweet);
+    }
 }
