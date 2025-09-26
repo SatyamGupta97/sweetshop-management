@@ -5,6 +5,7 @@ import com.example.sweet_shop.model.Sweet;
 import com.example.sweet_shop.service.SweetService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*; // Update this import
 import java.util.List;
 
@@ -56,5 +57,12 @@ public class SweetController {
 
         Sweet updatedSweet = sweetService.updateSweet(id, updatedInfo);
         return ResponseEntity.ok(updatedSweet);
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')") // This secures the endpoint
+    public ResponseEntity<String> deleteSweet(@PathVariable Long id) {
+        sweetService.deleteSweet(id);
+        return ResponseEntity.ok("Sweet deleted successfully.");
     }
 }
