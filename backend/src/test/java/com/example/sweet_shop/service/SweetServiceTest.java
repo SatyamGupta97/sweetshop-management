@@ -109,4 +109,19 @@ class SweetServiceTest {
         assertEquals(12.50, resultSweet.getPrice());
         assertEquals(40, resultSweet.getQuantity());
     }
+
+    @Test
+    void whenDeleteSweet_thenItShouldBeRemoved() {
+        // Arrange
+        Sweet sweet = new Sweet();
+        sweet.setName("To Be Deleted");
+        Sweet savedSweet = sweetRepository.save(sweet);
+        Long sweetId = savedSweet.getId();
+
+        // Act: Call the delete method which doesn't exist yet
+        sweetService.deleteSweet(sweetId);
+
+        // Assert
+        assertFalse(sweetRepository.findById(sweetId).isPresent());
+    }
 }
