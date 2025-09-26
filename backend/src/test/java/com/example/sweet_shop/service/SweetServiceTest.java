@@ -82,4 +82,31 @@ class SweetServiceTest {
         assertEquals(2, results.size());
         assertTrue(results.stream().allMatch(s -> s.getName().contains("Chocolate")));
     }
+
+    @Test
+    void whenUpdateSweet_thenDetailsShouldBeUpdated() {
+        // Arrange: Create and save an initial sweet
+        Sweet originalSweet = new Sweet();
+        originalSweet.setName("Old Name");
+        originalSweet.setPrice(10.00);
+        originalSweet.setQuantity(50);
+        Sweet savedSweet = sweetRepository.save(originalSweet);
+        Long sweetId = savedSweet.getId();
+
+        // Create an object with the updated information
+        Sweet updatedInfo = new Sweet();
+        updatedInfo.setName("New Updated Name");
+        updatedInfo.setPrice(12.50);
+        updatedInfo.setQuantity(40);
+
+        // Act: Call the update method that doesn't exist yet
+        Sweet resultSweet = sweetService.updateSweet(sweetId, updatedInfo);
+
+        // Assert
+        assertNotNull(resultSweet);
+        assertEquals(sweetId, resultSweet.getId());
+        assertEquals("New Updated Name", resultSweet.getName());
+        assertEquals(12.50, resultSweet.getPrice());
+        assertEquals(40, resultSweet.getQuantity());
+    }
 }
