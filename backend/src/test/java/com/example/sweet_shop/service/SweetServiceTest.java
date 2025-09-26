@@ -1,6 +1,7 @@
 package com.example.sweet_shop.service;
 
 import com.example.sweet_shop.model.Sweet;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,5 +29,24 @@ class SweetServiceTest {
         assertNotNull(savedSweet);
         assertNotNull(savedSweet.getId());
         assertEquals("Royal Chocolate", savedSweet.getName());
+    }
+
+    @Test
+    void whenGetAllSweets_thenReturnListOfSweets() {
+        // Arrange: Save some sweets to the database first
+        Sweet sweet1 = new Sweet();
+        sweet1.setName("Caramel Delight");
+        sweetRepository.save(sweet1);
+
+        Sweet sweet2 = new Sweet();
+        sweet2.setName("Mint Swirl");
+        sweetRepository.save(sweet2);
+
+        // Act: Call the method that doesn't exist yet
+        List<Sweet> sweets = sweetService.getAllSweets();
+
+        // Assert
+        assertNotNull(sweets);
+        assertEquals(2, sweets.size());
     }
 }
