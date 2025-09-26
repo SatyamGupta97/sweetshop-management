@@ -5,10 +5,9 @@ import com.example.sweet_shop.model.Sweet;
 import com.example.sweet_shop.service.SweetService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/sweets")
@@ -30,5 +29,11 @@ public class SweetController {
 
         Sweet createdSweet = sweetService.addSweet(sweetToCreate);
         return new ResponseEntity<>(createdSweet, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Sweet>> getAllSweets() {
+        List<Sweet> sweets = sweetService.getAllSweets();
+        return ResponseEntity.ok(sweets);
     }
 }
