@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import apiService from '../api/apiService';
-import { jwtDecode } from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode'; // ✅ fixed import
 
 const AuthContext = createContext();
 
@@ -9,12 +9,10 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // This function runs whenever the 'token' changes.
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        // The 'sub' (subject) claim in our JWT holds the username.
-        setUser({ username: decoded.sub });
+        setUser({ username: decoded.sub, role: decoded.role }); // store role
         localStorage.setItem('token', token);
       } catch (e) {
         console.error("Invalid or expired token", e);
@@ -23,8 +21,8 @@ const AuthProvider = ({ children }) => {
         setUser(null);
       }
     } else {
-        localStorage.removeItem('token');
-        setUser(null);
+      localStorage.removeItem('token');
+      setUser(null);
     }
   }, [token]);
 

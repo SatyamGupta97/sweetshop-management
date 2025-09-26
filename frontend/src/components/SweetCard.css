@@ -1,0 +1,315 @@
+/* Modern Sweet Card Styles */
+.sweet-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #f3f4f6;
+  position: relative;
+}
+
+.sweet-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.sweet-card.out-of-stock {
+  opacity: 0.7;
+}
+
+.sweet-card.out-of-stock:hover {
+  transform: none;
+}
+
+/* Card Header */
+.card-header {
+  position: relative;
+  height: 120px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #f59e0b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sweet-image-placeholder {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.placeholder-icon {
+  width: 30px;
+  height: 30px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Stock Badge */
+.stock-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.stock-good {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.stock-low {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.stock-empty {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* Card Content */
+.card-content {
+  padding: 1.25rem;
+}
+
+.sweet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sweet-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.sweet-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
+}
+
+.meta-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: #6b7280;
+}
+
+.sweet-category {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: capitalize;
+}
+
+.sweet-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.price-section,
+.quantity-section {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.price-icon,
+.quantity-icon {
+  width: 1rem;
+  height: 1rem;
+  color: #6b7280;
+}
+
+.sweet-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #059669;
+}
+
+.quantity-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Card Actions */
+.card-actions {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid #f3f4f6;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Purchase Button */
+.purchase-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.btn-disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Admin Actions */
+.admin-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-btn,
+.delete-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-btn {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border-color: #dbeafe;
+}
+
+.edit-btn:hover {
+  background-color: #dbeafe;
+  border-color: #93c5fd;
+  transform: translateY(-1px);
+}
+
+.delete-btn {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.delete-btn:hover {
+  background-color: #fecaca;
+  border-color: #fca5a5;
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .card-content {
+    padding: 1rem;
+  }
+  
+  .card-actions {
+    padding: 0.75rem 1rem;
+  }
+  
+  .sweet-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .admin-actions {
+    flex-direction: column;
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    flex: none;
+  }
+}
+
+/* Animation for quantity changes */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.sweet-card.updating .quantity-text {
+  animation: pulse 1s ease-in-out;
+}
+
+/* Hover effects for different card states */
+.sweet-card:not(.out-of-stock):hover .card-header {
+  background: linear-gradient(135deg, #fed7aa 0%, #fdba74 50%, #ea580c 100%);
+}
+
+.sweet-card:not(.out-of-stock):hover .sweet-name {
+  color: #059669;
+}
+
+/* Focus states for accessibility */
+.purchase-btn:focus,
+.edit-btn:focus,
+.delete-btn:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}

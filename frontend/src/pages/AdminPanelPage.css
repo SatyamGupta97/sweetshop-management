@@ -1,0 +1,152 @@
+/* Admin Panel Page CSS */
+
+/* General card hover */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+}
+
+/* Table Card Container */
+.admin-table-card {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  margin-top: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Table Header */
+.admin-table-card .table-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(90deg, #f0f4ff 0%, #e0f2fe 100%);
+}
+
+/* Table Styling */
+.admin-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.admin-table thead th {
+  text-align: left;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  background: #f9fafb;
+}
+
+.admin-table tbody tr {
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.admin-table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #eff6ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+}
+
+.admin-table td {
+  padding: 1rem 1.5rem;
+  vertical-align: middle;
+  font-size: 0.9rem;
+  color: #1f2937;
+}
+
+/* Username cell with avatar */
+.username-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.user-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Badge Styles */
+.badge-admin {
+  background: linear-gradient(135deg, #f3e8ff 0%, #fce7f3 100%);
+  border: 1px solid #e9d5ff;
+  color: #7c3aed;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-user {
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border: 1px solid #d1d5db;
+  color: #374151;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Promote Button */
+.promote-btn {
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.promote-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #4338ca 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.promote-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Table Responsive Scroll */
+.admin-table-card .overflow-x-auto {
+  overflow-x: auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
