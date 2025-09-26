@@ -1,18 +1,24 @@
 package com.example.sweet_shop.service;
 
 import com.example.sweet_shop.model.Sweet;
+import com.example.sweet_shop.repository.SweetRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class SweetServiceTest {
 
     @Autowired
-    private SweetService sweetService; // This will cause an error
+    private SweetService sweetService;
 
+    @Autowired
+    private SweetRepository sweetRepository;
     @Test
     void whenAddSweet_thenSweetShouldBeSaved() {
         // Arrange
@@ -48,5 +54,32 @@ class SweetServiceTest {
         // Assert
         assertNotNull(sweets);
         assertEquals(2, sweets.size());
+    }
+
+    @Test
+    void whenSearchSweetsByName_thenReturnMatchingSweets() {
+        // Arrange
+        Sweet sweet1 = new Sweet();
+        sweet1.setName("Milk Chocolate");
+        sweet1.setCategory("Chocolate");
+        sweetRepository.save(sweet1);
+
+        Sweet sweet2 = new Sweet();
+        sweet2.setName("Dark Chocolate");
+        sweet2.setCategory("Chocolate");
+        sweetRepository.save(sweet2);
+
+        Sweet sweet3 = new Sweet();
+        sweet3.setName("Caramel Swirl");
+        sweet3.setCategory("Caramel");
+        sweetRepository.save(sweet3);
+
+        // Act: Call the search method which does not exist yet
+        List<Sweet> results = sweetService.searchSweets("Chocolate", null, null, null);
+
+        // Assert
+        assertNotNull(results);
+        assertEquals(2, results.size());
+        assertTrue(results.stream().allMatch(s -> s.getName().contains("Chocolate")));
     }
 }
