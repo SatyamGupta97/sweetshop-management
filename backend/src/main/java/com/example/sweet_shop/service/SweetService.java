@@ -2,8 +2,11 @@ package com.example.sweet_shop.service;
 
 import com.example.sweet_shop.model.Sweet;
 import com.example.sweet_shop.repository.SweetRepository;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import java.util.List; // Add this import
+import jakarta.persistence.criteria.Predicate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SweetService {
@@ -18,8 +21,19 @@ public class SweetService {
         return sweetRepository.save(sweet);
     }
 
-    // This is the new method
     public List<Sweet> getAllSweets() {
         return sweetRepository.findAll();
+    }
+
+    public List<Sweet> searchSweets(String name, String category, Double minPrice, Double maxPrice) {
+        return sweetRepository.findAll((Specification<Sweet>) (root, query, criteriaBuilder) -> {
+            List<Predicate> predicates = new ArrayList<>();
+
+            if (name != null && !name.isBlank()) {
+                predicates.add(criteriaBuilder.like(criteriaBuilder.lower(root.get("name")), "%" + name.toLowerCase() + "%"));
+            }
+
+            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+        });
     }
 }
