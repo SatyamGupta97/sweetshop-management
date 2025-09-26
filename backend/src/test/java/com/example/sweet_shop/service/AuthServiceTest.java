@@ -25,4 +25,17 @@ class AuthServiceTest {
         assertNotNull(registeredUser);
         assertEquals("testuser", registeredUser.getUsername());
     }
+
+    @Test
+    void whenLoginWithCorrectCredentials_thenReturnJwtToken() {
+        // Arrange: Create a user to log in with
+        authService.register("loginuser", "password123");
+
+        // Act: Try to log in with the new, non-existent login method
+        String token = authService.login("loginuser", "password123");
+
+        // Assert: Check that a non-empty token is returned
+        assertNotNull(token);
+        assertFalse(token.isEmpty());
+    }
 }
