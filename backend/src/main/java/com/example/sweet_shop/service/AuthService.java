@@ -1,20 +1,32 @@
 package com.example.sweet_shop.service;
 
 import com.example.sweet_shop.model.User;
+import com.example.sweet_shop.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@Service // Marks this class as a Spring service component
+@Service
+@RequiredArgsConstructor // Lombok annotation for constructor injection
 public class AuthService {
 
-    /**
-     * This is a temporary implementation to make our test pass.
-     * We will add real logic and database interaction in the next step.
-     */
+    // Dependencies injected by Spring
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
     public User register(String username, String password) {
+        // Check if user already exists
+        if (userRepository.findByUsername(username).isPresent()) {
+            throw new RuntimeException("Username already exists");
+        }
+
         User newUser = new User();
         newUser.setUsername(username);
-        newUser.setPassword(password); // Note: Password is not yet hashed
+        // Hash the password before saving
+        newUser.setPassword(passwordEncoder.encode(password));
         newUser.setRole("USER");
-        return newUser;
+
+        // Save the user to the database and return the saved entity
+        return userRepository.save(newUser);
     }
 }

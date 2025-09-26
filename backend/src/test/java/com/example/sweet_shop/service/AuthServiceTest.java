@@ -1,4 +1,4 @@
-package com.example.sweetshop.service;
+package com.example.sweet_shop.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 // Import statements for User and AuthService will show errors
-import com.example.sweetshop.model.User;
+import com.example.sweet_shop.model.User;
 
 @SpringBootTest
 class AuthServiceTest {
