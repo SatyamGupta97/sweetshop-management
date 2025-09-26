@@ -5,8 +5,7 @@ import com.example.sweet_shop.model.Sweet;
 import com.example.sweet_shop.service.SweetService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.*; // Update this import
 import java.util.List;
 
 @RestController
@@ -34,6 +33,16 @@ public class SweetController {
     @GetMapping
     public ResponseEntity<List<Sweet>> getAllSweets() {
         List<Sweet> sweets = sweetService.getAllSweets();
+        return ResponseEntity.ok(sweets);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Sweet>> searchSweets(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice) {
+        List<Sweet> sweets = sweetService.searchSweets(name, category, minPrice, maxPrice);
         return ResponseEntity.ok(sweets);
     }
 }
