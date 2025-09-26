@@ -3,6 +3,7 @@ package com.example.sweet_shop.service;
 import com.example.sweet_shop.model.Sweet;
 import com.example.sweet_shop.repository.SweetRepository;
 import org.springframework.stereotype.Service;
+import java.util.List; // Add this import
 
 @Service
 public class SweetService {
@@ -14,8 +15,11 @@ public class SweetService {
     }
 
     public Sweet addSweet(Sweet sweet) {
-        // For now, we just save the sweet directly.
-        // We can add validation logic later.
         return sweetRepository.save(sweet);
+    }
+
+    // This is the new method
+    public List<Sweet> getAllSweets() {
+        return sweetRepository.findAll();
     }
 }
