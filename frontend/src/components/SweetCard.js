@@ -54,7 +54,7 @@ const SweetCard = ({ sweet, onPurchase, onDelete, onEdit, isAdmin }) => {
                     onClick={() => onPurchase(sweet.id)}
                 >
                     <ShoppingCart className="btn-icon" />
-                    {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+                    {isOutOfStock ? 'Out of Stock' : 'Purchase'}
                 </button>
 
                 {isAdmin && (
