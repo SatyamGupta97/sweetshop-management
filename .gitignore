@@ -1,0 +1,19 @@
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.swp
+
+# Maven/Gradle build outputs
+target/
+build/
+.gradle/
+
+# Node.js dependencies and build outputs
+node_modules/
+dist/
+.env.local
+.DS_Store
+
+# Log files
+*.log
